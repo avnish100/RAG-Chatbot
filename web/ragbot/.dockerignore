@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Next.js build output
+.next
+out
+
+# Environment files
+.env
+.env.local
+.env.*
+
+# Cache
+.cache
+.npm
+.pnpm
+
+# Misc
+.DS_Store
+*.pem
+.git
+.gitignore
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# IDE
+.idea
+.vscode

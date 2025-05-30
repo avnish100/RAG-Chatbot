@@ -1,0 +1,39 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    gcc \
+    python3-dev \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire application
+COPY . .
+
+# Debug: List what's actually in the container
+RUN echo "=== Contents of /app ===" && ls -la /app/
+RUN echo "=== Contents of /app/app ===" && ls -la /app/app/
+
+# Set environment variables
+ENV PORT=8000
+ENV PYTHONPATH=/app
+ENV GOOGLE_API_KEY=AIzaSyDmse8M7QMZfxLdUzr3tuLETappZaM-CSk
+ENV GEMINI_MODEL_ID=gemini-1.5-flash
+ENV PINECONE_API_KEY=pcsk_hNGvp_LtN749Su6t2wuoDisugoHo8qCwffrA8eeq73ZYUYnJWMPtGVHS9w5GEC8VQpXHv
+ENV PINECONE_INDEX_NAME=support-bot
+
+# Expose the port the app runs on
+EXPOSE 8000
+
+# Debug: Print directory tree and Python version
+RUN python --version && pip --version && tree -a /app || ls -R /app
+
+# Command to run the application
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

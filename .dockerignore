@@ -1,0 +1,22 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv
+.env
+*.log
+
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+
+# Misc
+.DS_Store
+*.swp
+*.swo
