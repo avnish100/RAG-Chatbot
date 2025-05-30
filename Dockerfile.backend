@@ -24,10 +24,6 @@ RUN echo "=== Contents of /app/app ===" && ls -la /app/app/
 # Set environment variables
 ENV PORT=8000
 ENV PYTHONPATH=/app
-ENV GOOGLE_API_KEY=AIzaSyDmse8M7QMZfxLdUzr3tuLETappZaM-CSk
-ENV GEMINI_MODEL_ID=gemini-1.5-flash
-ENV PINECONE_API_KEY=pcsk_hNGvp_LtN749Su6t2wuoDisugoHo8qCwffrA8eeq73ZYUYnJWMPtGVHS9w5GEC8VQpXHv
-ENV PINECONE_INDEX_NAME=support-bot
 
 # Expose the port the app runs on
 EXPOSE 8000
